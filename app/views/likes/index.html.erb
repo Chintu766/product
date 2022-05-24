@@ -1,0 +1,9 @@
+
+<br></br>
+<%@like.each do |like| %>
+  <strong>Title: </strong> <%= like.title %>
+  <strong> Description : </strong> <%= like.description %>
+<br></br>
+<% end %>
+
+<%= link_to'back to articles listing', articles_path %>

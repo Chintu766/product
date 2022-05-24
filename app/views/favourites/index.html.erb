@@ -1,0 +1,8 @@
+
+<center><%= link_to'back',articles_path %><center>
+
+<p><strong>added article</strong></p>
+ <% @fav.each do |favourite| %>
+   <%= favourite.title %><br></br>
+
+    <% end %>

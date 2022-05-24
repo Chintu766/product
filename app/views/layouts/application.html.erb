@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <% if Rails.env.staging? %>
+       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% end %>
+</head>
+    <% if logged_in? %>
+     <center><%= link_to'signout',logout_path, method: :delete %> |||
+       <%=link_to'go to likes pages',likes_path %><center>||
+        <%= link_to'go to search page',my_portfolio_path %>||
+       <% if !current_user.favourite.present? %>
+        <%= link_to'createfav',new_favourite_path%>
+       <%end%>
+        <%= link_to'gotofavourite',favourites_path %>||
+        <% if !current_user.share.present? %>
+         <%= link_to'create share',new_share_path%>||
+        <%end%>
+      |  <%= link_to'go to shared list',shares_path %>
+    <% end %>
+<body>
+  <% flash.each do |type, msg| %>
+   <div>
+     <%= msg %>
+   </div>
+ <% end %>
+<center> <%= yield %> <center>
+</body>
+</html>

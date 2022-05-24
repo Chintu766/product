@@ -1,0 +1,24 @@
+<%= form_with(model: @user, local: true) do |f| %>
+
+  <p class="text-center mt-4">
+    <%= f.label :mail %><br/>
+    <%= f.email_field :mail %>
+  </p>
+
+    <p class="text-center mt-4">
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+    </p>
+
+    <p class="text-center mt-4">
+      <%= f.label :role %><br/>
+      <%= f.text_field :role  %>
+    </p>
+
+  <p class="text-center mt-4">
+    <%= f.submit("Sign up" ) %>
+  </p>
+
+<% end %>
+
+<%= link_to 'login_page',login_path %>

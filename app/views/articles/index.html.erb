@@ -1,0 +1,26 @@
+<h2>Articles listing<h2>
+<div>
+  <% if current_user.role == "admin" %>
+    <%= link_to'create article',new_article_path %>
+  <%end%>
+  <h6>
+  <% @articles.each do |article| %>
+    <%= link_to"article#{article.id}" ,article %><br>
+    <%= article.title %><br>
+    <%= article.description %><br>
+    <% if article.image.present? %>
+    <dd><%= image_tag(article.image.picture.url, size: "150x100")  %></dd>
+    <%else%>
+        <%="no image" %>
+    <%end%>
+    <br>
+    <div><%= link_to'like', liked_article_article_path(article.id),method: "post" %> |
+     <%= link_to'share', share_share_path(article),method: :post %>|
+     <%= link_to'add_to_fav',fav_favourite_path(article.id),method: "post"  %></div><br>
+    <% if current_user.role == "admin" %>
+      <%= button_to'delete',article, method: :delete %>
+    <%end%>
+  <% end %>
+  <h6>
+
+<div>
